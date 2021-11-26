@@ -2,6 +2,13 @@ import StatisticsItem from './StatisticsItem';
 import styles from './Statistics.module.css';
 import PropTypes from 'prop-types';
 
+const randomColor = () => {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r},${g},${b})`;
+};
+
 const Statistics = ({ title, stats }) => {
     return (
         <section className={styles.statistics}>
@@ -10,7 +17,10 @@ const Statistics = ({ title, stats }) => {
                 {stats.map(({ id, label, percentage }) => (
                     <li
                     className={styles.item}
-                    key={id}>
+                    key={id} 
+                    style={{
+                    backgroundColor: randomColor(),
+                  }}>
                     <StatisticsItem label={label} percentage={percentage} />
                     </li>
                 ))}
